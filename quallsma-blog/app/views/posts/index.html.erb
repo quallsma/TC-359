@@ -8,4 +8,16 @@
 
 <br />
 
-<% if user_signed_in? %><%= link_to 'New Post', new_post_path %><% end %>
+<% if user_signed_in? %>
+
+	<h2>My Drafts</h2>
+
+	<% @drafts.each do |post| %>
+	  <ul>
+		<li><%= link_to post.title, post %> (<%= post.comments.count %> comments)</li>
+	  </ul>
+	<% end %>
+	
+	<%= link_to 'New Post', new_post_path %>
+	
+<% end %>
