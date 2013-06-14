@@ -14,7 +14,7 @@
 	<h3>Comments</h3>
 	<ul>
 	<% @post.comments.each do |c| %>
-	  <li><strong><%= link_to c.author_name, c.author_url %> says:</strong> <%= c.body %></li>
+	  <li><%= gravatar_image_tag(c.author_email, :alt => c.author_name, :gravatar => { :size => 32 }) %> <strong><%= link_to c.author_name, c.author_url %> says:</strong> <%= c.body %></li>
 	<% end %>
 	</ul>
 
