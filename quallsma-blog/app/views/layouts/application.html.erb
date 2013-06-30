@@ -8,10 +8,26 @@
 </head>
 <body>
 	<% if user_signed_in? %>
-<p><%= gravatar_image_tag(current_user.email, :alt => current_user.email, :gravatar => { :size => 32 }) %> Hello, <%= current_user.email %> | <%= link_to "Edit Account", edit_user_registration_path   %> | <%= link_to "Log out", destroy_user_session_path, :method => :delete %></p>	<% else %>
-		<p><%= link_to "Sign in", new_user_session_path %></p>
+	<div class="navbar navbar-static-top">
+	  <div class="navbar-inner">
+		  <a class="brand" href=""><%= gravatar_image_tag(current_user.email, :alt => current_user.email, :gravatar => { :size => 16 }) %> <strong><%= current_user.email %></strong></a>
+			<ul class="nav">
+				<li><%= link_to "Edit Account", edit_user_registration_path %></li>
+				<li><%= link_to "Log out", destroy_user_session_path, :method => :delete %></li>
+			</ul>
+			<%= link_to 'New Post', new_post_path, :class => 'btn btn btn-success' %>
+		</div>
+	</div>
+<% else %>
+		<p><%= link_to "Sign in", new_user_session_path%></p>
 	<% end %>
-<%= yield %>
+
+  	<div class="container">
+		<div class="page-header">
+			<h1>Yeah I Said It <small>with @turkey_ma_nay</small></h1>
+		</div>
+		<%= yield %>
+	</div>
 
 </body>
 </html>

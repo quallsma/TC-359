@@ -13,7 +13,7 @@ class PostsController < ApplicationController
       format.json { render json: @posts }
     end
   end
-
+    
   # GET /posts/1
   # GET /posts/1.json
   def show
@@ -83,5 +83,9 @@ class PostsController < ApplicationController
       format.html { redirect_to posts_url }
       format.json { head :no_content }
     end
+  end
+  
+  def tag_cloud
+    @tags = Post.tag_counts_on(:tag_list)
   end
 end
